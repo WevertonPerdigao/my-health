@@ -1,0 +1,39 @@
+<div class="center container-login ">
+    <div id="content-login" class="center">
+        <mat-card id="form-login">
+            <form [formGroup]="loginForm" (keyup.enter)="login()" class="form-login">
+
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>E-mail</mat-label>
+                    <input matInput type="username" formControlName="username" required maxlength="100"
+                           placeholder="E-mail" id="username" autofocus>
+                    <mat-icon matPrefix class="icon-login">person</mat-icon>
+                    <mat-error>
+                        Campo obrigatório
+                    </mat-error>
+                </mat-form-field>
+
+
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Password</mat-label>
+                    <input id="password" matInput type="password"
+                           placeholder="Senha" formControlName="password" required maxlength="50"
+                           autocomplete="off">
+                    <mat-icon matPrefix class="icon-login">lock</mat-icon>
+                    <mat-error>
+                        Informe a senha
+                    </mat-error>
+                </mat-form-field>
+
+            </form>
+
+            <button id="btn-submit" mat-raised-button color="primary" class="full-width" [disabled]="loginForm.invalid"
+                    (click)="login()">Login
+            </button>
+
+            <div class="new-user">
+                <a mat-button (click)="siginup()" >Create Account</a>
+            </div>
+        </mat-card>
+    </div>
+</div>
