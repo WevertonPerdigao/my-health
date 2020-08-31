@@ -24,12 +24,17 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {NewUserComponent} from './new-user/new-user.component';
 import {HttpClientModule} from "@angular/common/http";
+import { SystemLayoutComponent } from './system-layout/system-layout.component';
+import {MatListModule} from "@angular/material/list";
+import { DoctorsComponent } from './doctors/doctors.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         LoginComponent,
-        NewUserComponent
+        NewUserComponent,
+        SystemLayoutComponent,
+        DoctorsComponent
     ],
     imports: [
         BrowserModule,
@@ -57,7 +62,7 @@ import {HttpClientModule} from "@angular/common/http";
         MatSnackBarModule,
         MatDialogModule,
         MatProgressSpinnerModule,
-
+        MatListModule,
     ],
     providers: [{provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}}],
     bootstrap: [AppComponent]

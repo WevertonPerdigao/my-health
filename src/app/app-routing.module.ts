@@ -2,9 +2,28 @@ import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {LoginComponent} from "./login/login.component";
 import {NewUserComponent} from "./new-user/new-user.component";
+import {SystemLayoutComponent} from "./system-layout/system-layout.component";
+import {DoctorsComponent} from "./doctors/doctors.component";
 
 
 const routes: Routes = [
+    {
+        path: '',
+        component: SystemLayoutComponent,
+        // canActivate: [LoggedinGuard],
+        // canLoad: [LoggedinGuard],
+        children: [
+            {
+                path: '',
+
+                redirectTo: 'agendamentos',
+                pathMatch: 'full',
+
+            },
+            {path: "doctors", component: DoctorsComponent}
+
+        ]
+    },
     {
         path: "login", component: LoginComponent,
         data: {

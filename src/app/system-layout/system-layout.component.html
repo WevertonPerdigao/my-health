@@ -1,0 +1,55 @@
+<div class="container"
+     [class.is-mobile]="mobileQuery.matches">
+
+    <mat-toolbar color="primary" class="toolbar">
+
+        <mat-toolbar-row #mattoolbar>
+
+
+            <button id="btn-menu" #buttonmenu mat-icon-button type="button" autofocus (click)="sidenav.toggle()">
+                <mat-icon>menu</mat-icon>
+            </button>
+
+            <p id="sp-toolbar-title" #spantitle class="toolbar-title"></p>
+
+            <!-- This fills the remaining space of the current row -->
+            <span class="fill-remaining-space"></span>
+
+
+            <div class="container-user">
+                <div id="user" class="content-user">
+                    <a id="nome" class="name-user">{{'Weverton Freitas' | titlecase}}</a><br>
+                    <div>
+                        <button id="sair" mat-icon-button type="button" disableRipple="true" class="btn-logout-layout"
+                                (click)="onLogout()"> Sair
+                            <mat-icon>exit-to-app</mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+    <mat-sidenav-container class="sidenav-container"
+                           [style.marginTop.px]="mobileQuery.matches ? 64 : 0">
+        <mat-sidenav #sidenav mode="'side'" (click)="sidenav.toggle()"
+                     fixedInViewport="mobileQuery.matches" fixedTopGap="0">
+
+            <mat-nav-list>
+                <a mat-list-item routerLink=".">Teste 1</a>
+                <a mat-list-item routerLink=".">Teste 2</a>
+            </mat-nav-list>
+
+        </mat-sidenav>
+
+        <mat-sidenav-content class="sidenav-content">
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+
+    </mat-sidenav-container>
+</div>
+
+
+
