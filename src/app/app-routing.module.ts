@@ -3,20 +3,25 @@ import {Routes, RouterModule} from '@angular/router';
 import {LoginComponent} from './login/login.component';
 import {NewUserComponent} from './new-user/new-user.component';
 import {SystemLayoutComponent} from './system-layout/system-layout.component';
-import {DoctorsComponent} from './doctors/doctors.component';
-import {AppointmentsComponent} from './appointments/appointments.component';
+import {LoggedinGuard} from "./security/loggedin.guard";
 
 
 const routes: Routes = [
     {
         path: '',
         component: SystemLayoutComponent,
-        // canActivate: [LoggedinGuard],
-        // canLoad: [LoggedinGuard],
+        canActivate: [LoggedinGuard],
+        canLoad: [LoggedinGuard],
         children: [
             {path: '', redirectTo: 'appointments', pathMatch: 'full'},
-            {path: 'appointments', component: AppointmentsComponent},
-            {path: 'doctors', component: DoctorsComponent},
+            {
+                path: 'appointments',
+                loadChildren: () => import('./appointments/appointments.module').then(m => m.AppointmentsModule)
+            },
+            {
+                path: 'doctors',
+                loadChildren: () => import('./doctors/doctors.module').then(m => m.DoctorsModule)
+            },
 
         ]
     },
@@ -32,7 +37,7 @@ const routes: Routes = [
             title: 'Login'
         }
     },
-    {path: '**', redirectTo: 'login'}
+    {path: '**', redirectTo: 'appointments'}
 
 ];
 

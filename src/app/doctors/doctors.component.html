@@ -1,1 +1,58 @@
-<p>doctors works!</p>
+<mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="" #input>
+</mat-form-field>
+
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+        <ng-container matColumnDef="cod">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Código</th>
+            <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="doctor">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Nome</th>
+            <td mat-cell *matCellDef="let row"> {{row.nome}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="especialidade">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Especialidade</th>
+            <td mat-cell *matCellDef="let row"> {{row.especialidade}} </td>
+        </ng-container>
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef class="more-info"></th>
+            <td mat-cell *matCellDef="let row">
+                <button id="btn-more" mat-icon-button [matMenuTriggerFor]="menu">
+                    <mat-icon>more_horiz</mat-icon>
+                </button>
+                <mat-menu #menu>
+                    <button id="btn-edit" mat-menu-item (click)="editar(row)">
+                        <span>Editar</span>
+                    </button>
+                    <button id="btn-remove" mat-menu-item (click)="excluir(row)">
+                        <span>Excluir</span>
+                    </button>
+                </mat-menu>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        <!-- Row shown when there is no matching data. -->
+        <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+        </tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>
+
+
+<div class="layout-container-action-button">
+    <button matTooltip="Add Doctor" mat-fab color="primary"
+            (click)="create()">
+        <mat-icon>add</mat-icon>
+    </button>
+</div>

@@ -93,9 +93,10 @@ export class DialogCreateAppointmentComponent implements OnInit {
     }
 
     edit(appointment: Agendamento) {
-        this.appointmentsService.create(appointment)
+        console.log(appointment);
+        this.appointmentsService.edit(appointment)
             .subscribe(result => {
-                    this.snackBar.open('Medical appointment edited¶ with success');
+                    this.snackBar.open('Medical appointment edited with success');
                     this.dialogRef.close({resultado: 'success'});
 
                 },

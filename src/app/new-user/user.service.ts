@@ -10,9 +10,7 @@ import {Usuario} from "../model/usuario";
 })
 export class UserService {
 
-    readonly basePathUser = `${environment.api}/users`;
-
-    index = 0;
+    readonly basePathUser = `${environment.api}/usuarios`;
 
     constructor(private httpClient: HttpClient) {
     }
@@ -22,15 +20,7 @@ export class UserService {
     }
 
     listAll(): Observable<Usuario[]> {
-        return of(this.getUsuarios());
-        // return this.httpClient.get<Usuario[]>(this.basePathUser);
-    }
-
-    getUsuarios(): Usuario[] {
-
-        return Array.from({length: 2}, (_, k) =>
-            new Usuario("Geraldo" + this.index++));
-
+        return this.httpClient.get<Usuario[]>(this.basePathUser);
     }
 
 

@@ -3,28 +3,31 @@ import {HttpClient} from "@angular/common/http";
 import {Observable, of} from "rxjs";
 import {Medico} from "../model/medico";
 import {environment} from "../../environments/environment";
+import {Usuario} from "../model/usuario";
+import {Agendamento} from "../model/agendamento";
 
 @Injectable({
     providedIn: 'root'
 })
 export class DoctorsService {
-    readonly basePathDoctors = `${environment.api}/doctors`;
-
-    index = 0;
+    readonly basePathDoctors = `${environment.api}/medicos`;
 
     constructor(private httpClient: HttpClient) {
     }
 
     listAll(): Observable<Medico[]> {
-        return of(this.getMedicos());
-        //  return this.httpClient.get<Medico[]>(this.basePathDoctors);
+        return this.httpClient.get<Medico[]>(this.basePathDoctors);
     }
 
-
-    getMedicos(): Medico[] {
-
-        return Array.from({length: 2}, (_, k) =>
-            new Medico("Weverton" + this.index++, "Neurologista"+ this.index++));
-
+    create(medico: Medico): Observable<Medico> {
+        return this.httpClient.post<Medico>(`${this.basePathDoctors}`, medico);
     }
+    edit(medico: Medico): Observable<Medico> {
+        return this.httpClient.put<Medico>(`${this.basePathDoctors}`, medico);
+    }
+
+    delete(id: number) {
+        return this.httpClient.delete<Medico>(`${this.basePathDoctors}/${id}`);
+    }
+
 }

@@ -1,6 +1,7 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {MediaMatcher} from "@angular/cdk/layout";
 import {TitleService} from "./title.service";
+import {AuthService} from "../login/auth.service";
 
 @Component({
     selector: 'app-system-layout',
@@ -16,7 +17,8 @@ export class SystemLayoutComponent implements OnInit {
 
     constructor(changeDetectorRef: ChangeDetectorRef,
                 media: MediaMatcher,
-                private titleService: TitleService) {
+                private titleService: TitleService,
+                private authService: AuthService) {
         this.mobileQuery = media.matchMedia('(max-width: 600px)');
         this._mobileQueryListener = () => changeDetectorRef.detectChanges();
         this.mobileQuery.addListener(this._mobileQueryListener);
@@ -32,6 +34,6 @@ export class SystemLayoutComponent implements OnInit {
     }
 
     onLogout() {
-
+        this.authService.logout();
     }
 }

@@ -25,7 +25,7 @@ export class AppointmentsComponent implements OnInit {
                 private titleService: TitleService,
                 private dialog: MatDialog,
                 private snackBar: MatSnackBar) {
-        this.listAppointments();
+        this.listAll();
         this.titleService.setTitle('Medical Appointments');
     }
 
@@ -43,7 +43,7 @@ export class AppointmentsComponent implements OnInit {
         }
     }
 
-    listAppointments() {
+    listAll() {
         this.appointmentsService.listAll()
             .subscribe(appointments => {
                 this.dataSource = new MatTableDataSource(appointments);
@@ -55,41 +55,35 @@ export class AppointmentsComponent implements OnInit {
         const dialogRef = this.dialog.open(DialogCreateAppointmentComponent, {
             width: '788px', data: appointment
         });
-
-        dialogRef.afterClosed().subscribe(result => {
-            // console.log(result);
-            if (result.resultado === 'success') {
-            }
-        });
+        this.subscribeResult(dialogRef);
     }
 
-    excluir(row: any) {
+    excluir(agendamento: Agendamento) {
+        this.appointmentsService.delete(agendamento.id)
+            .subscribe(() => {
+                    this.listAll();
+                    this.ngOnInit();
+                    this.snackBar.open('Medical Appointiment removed with success');
+                },
+                error => this.snackBar.open('Error removing Medical Appointiment '));
 
-        const appointments = this.dataSource.data;
-        const index = appointments.indexOf(row);
-
-        if (index >= 0) {
-            appointments.splice(index, 1);
-            this.dataSource = new MatTableDataSource(appointments);
-            this.ngOnInit();
-            this.snackBar.open('Medical Appointiment removed with success');
-        }
     }
 
     createAppointment() {
-        /* abre dialog e retorna a referência */
-
-        // dialogConfig.disableClose = true;
         const dialogRef = this.dialog.open(DialogCreateAppointmentComponent, {
             width: '788px',
         });
+        this.subscribeResult(dialogRef);
+    }
 
+    subscribeResult(dialogRef) {
         dialogRef.afterClosed().subscribe(result => {
-            // console.log(result);
+            console.log(result);
             if (result.resultado === 'success') {
+                this.listAll();
+                this.ngOnInit();
             }
         });
-
     }
 }
 

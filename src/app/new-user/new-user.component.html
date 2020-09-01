@@ -4,12 +4,12 @@
             <form [formGroup]="formUsuario" (keyup.enter)="salvar()" class="form-login">
 
                 <mat-form-field appearance="outline" class="full-width">
-                    <mat-label>Nome</mat-label>
+                    <mat-label>Name</mat-label>
                     <input matInput type="username" formControlName="nome" required maxlength="100"
-                           placeholder="Nome" id="nome" autofocus>
+                           placeholder="Name" id="nome" autofocus>
                     <mat-icon matPrefix class="icon-login">person</mat-icon>
                     <mat-error>
-                        Campo obrigatório
+                        the field is required
                     </mat-error>
                 </mat-form-field>
 
@@ -19,7 +19,7 @@
                            placeholder="E-mail" id="username" autofocus>
                     <mat-icon matPrefix class="icon-login">person</mat-icon>
                     <mat-error>
-                        Informe o e-mail
+                        the field is required
                     </mat-error>
                 </mat-form-field>
 
@@ -27,11 +27,11 @@
                 <mat-form-field appearance="outline" class="full-width">
                     <mat-label>Password</mat-label>
                     <input id="password" matInput type="password"
-                           placeholder="Senha" formControlName="senha" required maxlength="50"
+                           placeholder="Password" formControlName="senha" required maxlength="50"
                            autocomplete="off">
                     <mat-icon matPrefix class="icon-login">lock</mat-icon>
                     <mat-error>
-                        Informe a senha
+                        the field is required
                     </mat-error>
                 </mat-form-field>
 

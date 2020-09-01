@@ -23,7 +23,7 @@ import {MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule} from "@angular/materia
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {NewUserComponent} from './new-user/new-user.component';
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {SystemLayoutComponent} from './system-layout/system-layout.component';
 import {MatListModule} from "@angular/material/list";
 import {DoctorsComponent} from './doctors/doctors.component';
@@ -34,6 +34,8 @@ import {DialogCreateAppointmentComponent} from './appointments/dialog-create-app
 import {MatNativeDateModule} from "@angular/material/core";
 import ptBr from '@angular/common/locales/pt';
 import {registerLocaleData} from "@angular/common";
+import {TokenInterceptor} from "./login/token.interceptor";
+import {DialogCreateDoctorComponent} from "./doctors/dialog-create-doctor/dialog-create-doctor.component";
 
 registerLocaleData(ptBr);
 
@@ -43,9 +45,6 @@ registerLocaleData(ptBr);
         LoginComponent,
         NewUserComponent,
         SystemLayoutComponent,
-        DoctorsComponent,
-        AppointmentsComponent,
-        DialogCreateAppointmentComponent
     ],
     imports: [
         BrowserModule,
@@ -78,10 +77,10 @@ registerLocaleData(ptBr);
         MatTooltipModule,
         MatNativeDateModule
     ],
-    entryComponents: [DialogCreateAppointmentComponent],
     providers: [
         {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}},
-        {provide: LOCALE_ID, useValue: 'pt-PT'}
+        {provide: LOCALE_ID, useValue: 'pt-PT'},
+        {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
     ],
     bootstrap: [AppComponent]
 })
