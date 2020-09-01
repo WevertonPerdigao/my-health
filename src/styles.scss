@@ -19,3 +19,18 @@ body {
 .full-width {
   width: 100%;
 }
+
+.layout-container-action-button {
+  top: auto;
+  right: 3.065rem;
+  bottom: 2.44rem;
+  left: auto;
+  position: fixed;
+  z-index: 1;
+}
+
+.container-title-dialog {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

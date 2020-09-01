@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import {LOCALE_ID, NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -24,9 +24,18 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {NewUserComponent} from './new-user/new-user.component';
 import {HttpClientModule} from "@angular/common/http";
-import { SystemLayoutComponent } from './system-layout/system-layout.component';
+import {SystemLayoutComponent} from './system-layout/system-layout.component';
 import {MatListModule} from "@angular/material/list";
-import { DoctorsComponent } from './doctors/doctors.component';
+import {DoctorsComponent} from './doctors/doctors.component';
+import {AppointmentsComponent} from './appointments/appointments.component';
+import {MatMenuModule} from "@angular/material/menu";
+import {MatTooltipModule} from "@angular/material/tooltip";
+import {DialogCreateAppointmentComponent} from './appointments/dialog-create-appointment/dialog-create-appointment.component';
+import {MatNativeDateModule} from "@angular/material/core";
+import ptBr from '@angular/common/locales/pt';
+import {registerLocaleData} from "@angular/common";
+
+registerLocaleData(ptBr);
 
 @NgModule({
     declarations: [
@@ -34,7 +43,9 @@ import { DoctorsComponent } from './doctors/doctors.component';
         LoginComponent,
         NewUserComponent,
         SystemLayoutComponent,
-        DoctorsComponent
+        DoctorsComponent,
+        AppointmentsComponent,
+        DialogCreateAppointmentComponent
     ],
     imports: [
         BrowserModule,
@@ -63,8 +74,15 @@ import { DoctorsComponent } from './doctors/doctors.component';
         MatDialogModule,
         MatProgressSpinnerModule,
         MatListModule,
+        MatMenuModule,
+        MatTooltipModule,
+        MatNativeDateModule
     ],
-    providers: [{provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}}],
+    entryComponents: [DialogCreateAppointmentComponent],
+    providers: [
+        {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}},
+        {provide: LOCALE_ID, useValue: 'pt-PT'}
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {

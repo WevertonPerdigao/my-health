@@ -1,0 +1,51 @@
+<div class="container-title-dialog">
+    <p mat-dialog-title>Create Medical Appointment</p>
+    <button id="btn-close" mat-icon-button type="button" (click)="close()" >
+        <mat-icon>close</mat-icon>
+    </button>
+</div>
+
+<form [formGroup]="appointmentForm">
+
+    <mat-form-field class="full-width">
+        <mat-placeholder>Doctor</mat-placeholder>
+        <mat-select formControlName="medico" [compareWith]="compareDoctor">
+            <mat-option *ngFor="let doctor of doctors" [value]="doctor">
+                {{ doctor.nome}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+        <mat-placeholder>Client</mat-placeholder>
+        <mat-select formControlName="usuario" [compareWith]="compareClient">
+            <mat-option *ngFor="let client of clients" [value]="client">
+                {{ client.nome}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+
+    <!-- Data aporte -->
+    <mat-form-field class="full-width">
+        <input matInput [matDatepicker]="picker" placeholder="Data"
+               (focus)="picker.open()" (click)="picker.open()" formControlName="data" required
+               [min]="minDate">
+        <mat-datepicker-toggle matSuffix [for]="picker">
+            <mat-icon matDatepickerToggleIcon color="primary"></mat-icon>
+        </mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="appointmentForm.get('data')?.errors?.required">
+            Informe a data da consulta
+        </mat-error>
+        <mat-error *ngIf="appointmentForm.get('data')?.errors?.matDatepickerMin?.min">
+            Data mínima é hoje
+        </mat-error>
+    </mat-form-field>
+
+    <button id="btn-submit" mat-raised-button color="primary" class="full-width" [disabled]="appointmentForm.invalid"
+            (click)="salvar()">Salvar
+    </button>
+
+
+</form>

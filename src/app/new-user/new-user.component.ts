@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Constants} from "../utils/constants";
-import {NewUserService} from "./new-user.service";
-import {Usuario} from "./usuario";
+import {UserService} from "./user.service";
+import {Usuario} from "../model/usuario";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
 
@@ -16,7 +16,7 @@ export class NewUserComponent implements OnInit {
     formUsuario: FormGroup;
 
     constructor(private fb: FormBuilder,
-                private  newUserService: NewUserService,
+                private  newUserService: UserService,
                 private snacBar: MatSnackBar,
                 private  router: Router) {
     }

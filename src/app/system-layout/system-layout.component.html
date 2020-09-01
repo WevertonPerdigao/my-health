@@ -10,7 +10,7 @@
                 <mat-icon>menu</mat-icon>
             </button>
 
-            <p id="sp-toolbar-title" #spantitle class="toolbar-title"></p>
+            <span id="sp-toolbar-title" #spantitle class="toolbar-title">{{title}}</span>
 
             <!-- This fills the remaining space of the current row -->
             <span class="fill-remaining-space"></span>
@@ -38,8 +38,8 @@
                      fixedInViewport="mobileQuery.matches" fixedTopGap="0">
 
             <mat-nav-list>
-                <a mat-list-item routerLink=".">Teste 1</a>
-                <a mat-list-item routerLink=".">Teste 2</a>
+                <a mat-list-item routerLink=".">Appointments</a>
+                <a mat-list-item routerLink=".">Doctors</a>
             </mat-nav-list>
 
         </mat-sidenav>

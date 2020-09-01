@@ -1,0 +1,87 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  flex-wrap: wrap;
+}
+
+.mat-toolbar-row {
+  height: 64px;
+  width: 100%;
+  position: fixed;
+}
+
+.btn-logout-layout {
+  font-size: 16px;
+}
+
+.is-mobile .toolbar {
+
+  position: absolute;
+  /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+  z-index: 0;
+}
+
+.sidenav-container {
+  /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
+     causes `<mat-sidenav-content>` to act as our scrolling element for desktop login-layout-sgp. */
+  flex: 1;
+}
+
+.is-mobile .sidenav-container {
+  /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
+     `<body>` to be our scrolling element for mobile login-layout-sgp. */
+  flex: 1 0 auto;
+
+}
+
+//.mat-drawer {
+//  /*fundo do menu do sistema*/
+//  background-color: rgba(255, 255, 255, 1);
+//  opacity: 1;
+//  //width: 10rem;
+//  color: rgba(0, 0, 0, 1);
+//  font-size: 1rem;
+//}
+
+.toolbar-title {
+  font-size: 24px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 68px;
+  white-space: nowrap;
+  max-width: 51em;
+}
+
+.name-user {
+  color: white;
+  font-size: 1rem;
+  text-decoration: none;
+  // margin-left: 10px;
+  margin-right: 2.375em;
+}
+
+.fill-remaining-space {
+  /* This fills the remaining space, by using flexbox.
+     Every toolbar row uses a flexbox row layout-sgp. */
+  flex: 1 1 auto;
+}
+
+.container-user {
+  margin-right: 0.8em;
+  // background-color: #388E3C;
+  // height: 4rem;
+  // display: flex;
+  // align-items: center;
+}
+
+.content-user {
+  //  padding: 0 10px;
+  width: auto;
+  align-items: baseline;
+  display: flex;
+}
