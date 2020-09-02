@@ -61,6 +61,23 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "homolog": {
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.homolog.ts"
+                }
+              ]
             }
           }
         },
@@ -73,6 +90,9 @@
             "production": {
               "browserTarget": "my-health:build:production"
             }
+          },
+          "homolog": {
+            "browserTarget": "gpitbam:build:homolog"
           }
         },
         "extract-i18n": {

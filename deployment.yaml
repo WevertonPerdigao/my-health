@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aplicacao-deployment
+spec:
+  selector:
+    matchLabels:
+      app: aplicacao-pod
+  template:
+    metadata:
+      labels:
+        app: aplicacao-pod
+    spec:
+      containers:
+        - name: container-aplicacao
+          image: wevertonperdigao2019/myhealth-web
+          ports:
+            - containerPort: 80
