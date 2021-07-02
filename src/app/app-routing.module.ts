@@ -4,6 +4,7 @@ import {LoginComponent} from './login/login.component';
 import {NewUserComponent} from './new-user/new-user.component';
 import {SystemLayoutComponent} from './system-layout/system-layout.component';
 import {LoggedinGuard} from "./security/loggedin.guard";
+import {DashboardComponent} from "./dashboard/dashboard.component";
 
 
 const routes: Routes = [
@@ -13,14 +14,21 @@ const routes: Routes = [
         canActivate: [LoggedinGuard],
         canLoad: [LoggedinGuard],
         children: [
-            {path: '', redirectTo: 'appointments', pathMatch: 'full'},
+            {path: '', redirectTo: 'categorias', pathMatch: 'full'},
             {
-                path: 'appointments',
+                path: 'kkkkk',
                 loadChildren: () => import('./appointments/appointments.module').then(m => m.AppointmentsModule)
             },
             {
-                path: 'doctors',
+                path: 'kkkkkkkk',
                 loadChildren: () => import('./doctors/doctors.module').then(m => m.DoctorsModule)
+            },
+            {
+                path: 'dashboard', component: DashboardComponent
+            },
+            {
+                path: 'categorias',
+                loadChildren: () => import('./categorias/categorias.module').then(m => m.CategoriasModule)
             },
 
         ]

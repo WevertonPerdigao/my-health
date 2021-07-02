@@ -1,1 +1,6 @@
-<p>categorias works!</p>
+<div class="centered">
+    <div class="categorias-cards">
+        <app-categoria *ngFor="let categoria of categorias" [categoria]="categoria">
+        </app-categoria>
+    </div>
+</div>

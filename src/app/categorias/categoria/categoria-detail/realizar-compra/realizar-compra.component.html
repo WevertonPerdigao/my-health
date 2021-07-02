@@ -1,1 +1,43 @@
-<p>realizar-compra works!</p>
+<div class="container-title-dialog">
+    <p mat-dialog-title>Editar Estoque</p>
+    <button id="btn-close" mat-icon-button type="button" (click)="close()">
+        <mat-icon>close</mat-icon>
+    </button>
+</div>
+
+<form>
+
+    <div class="full-width item-compra">
+        <mat-placeholder>Produto :{{compra.produto}}</mat-placeholder>
+    </div>
+
+    <div class="full-width item-compra">
+        <mat-placeholder>Validade :{{compra.validade | date: 'dd/MM/yyyy'}}</mat-placeholder>
+    </div>
+
+
+    <div class="full-width item-compra">
+        <mat-placeholder>Preço Total :{{compra.precoUnitario | currency: 'BRL'}}</mat-placeholder>
+    </div>
+
+
+    <div class="full-width item-compra">
+        <mat-placeholder>Preço Total :{{compra.precoTotaL | currency: 'BRL'}}</mat-placeholder>
+    </div>
+
+
+    <mat-form-field class="full-width">
+        <mat-placeholder>Quantidade</mat-placeholder>
+        <input matInput [formControl]="quantidade" required type="number" maxlength="100" id="nome">
+        <mat-error>
+            Campo Obrigatório
+        </mat-error>
+
+    </mat-form-field>
+
+    <button id="btn-submit" mat-raised-button color="primary" class="full-width"
+            (click)="salvar()">Salvar
+    </button>
+
+
+</form>

@@ -85,3 +85,18 @@
   align-items: baseline;
   display: flex;
 }
+
+
+.container-menu {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  justify-content: center;
+}
+
+
+.logo {
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+}

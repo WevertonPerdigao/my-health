@@ -36,6 +36,7 @@ import ptBr from '@angular/common/locales/pt';
 import {registerLocaleData} from "@angular/common";
 import {TokenInterceptor} from "./login/token.interceptor";
 import {DialogCreateDoctorComponent} from "./doctors/dialog-create-doctor/dialog-create-doctor.component";
+import {DashboardComponent} from './dashboard/dashboard.component';
 
 registerLocaleData(ptBr);
 
@@ -45,6 +46,7 @@ registerLocaleData(ptBr);
         LoginComponent,
         NewUserComponent,
         SystemLayoutComponent,
+        DashboardComponent,
     ],
     imports: [
         BrowserModule,
@@ -52,7 +54,6 @@ registerLocaleData(ptBr);
         BrowserAnimationsModule,
         ReactiveFormsModule,
         HttpClientModule,
-
         MatCardModule,
         FormsModule,
         MatInputModule,

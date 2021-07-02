@@ -1,0 +1,41 @@
+.categorias-cards {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+.centered {
+  display: flex;
+  justify-content: center;
+}
+
+//1card
+@media screen and (min-width: 550px) {
+  .categorias-cards {
+    width: 550px;
+  }
+}
+
+
+//2cards
+@media screen and (min-width: 1085px) {
+  .categorias-cards {
+    width: 1085px;
+  }
+}
+
+
+//3cards
+@media screen and (min-width: 1620px) {
+  .categorias-cards {
+    width: 1620px;
+  }
+}
+
+
+//4cards
+@media screen and (min-width: 2155px) {
+  .categorias-cards {
+    width: 2155px;
+  }
+}
